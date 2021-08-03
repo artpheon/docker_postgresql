@@ -17,8 +17,10 @@ RUN apt-get update && \
     sudo apt-get -y install python3.8 python3-venv python3-pip python3-dev libpq-dev postgresql postgresql-contrib && \
     export PATH=$PATH:/usr/lib/postgresql/12/bin && \
     pip install --upgrade pip && \
-    pip3 install psycopg2
-
+    pip3 install psycopg2 && \
+    sudo service postgresql start
+# then run 'sudo -u postgres -i' to get into databases
+# or sudo -u postgres psql database-name
 
 #copy everything to container
 COPY ./srcs/* .
@@ -35,8 +37,8 @@ COPY ./srcs/* .
 #setup wordpress
 #set workdir
 WORKDIR /var/www/hrobbin
-RUN sudo service postgresql start
-# then run 'sudo -u postgres -i' to get into databases
+
+
 #specify the ports to listen (does not actually publish them)
 EXPOSE 80 443
 

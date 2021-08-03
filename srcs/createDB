@@ -1,0 +1,10 @@
+CREATE DATABASE Staff;
+CREATE USER Artur WITH ENCRYPTED PASSWORD 'python';
+#\l to list databases
+#\du to list users
+GRANT ALL PRIVILEGES ON DATABASE Staff TO Artur;
+#\c Staff Artur to connect to a database as a specific user
+CREATE SCHEMA mystaff AUTHORIZATION Artur;
+
+DROP DATABASE Staff;
+DROP USER Artur;
