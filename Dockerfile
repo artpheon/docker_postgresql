@@ -17,13 +17,14 @@ RUN apt-get update && \
     sudo apt-get -y install python3.8 python3-venv python3-pip python3-dev libpq-dev postgresql postgresql-contrib && \
     export PATH=$PATH:/usr/lib/postgresql/12/bin && \
     pip install --upgrade pip && \
-    pip3 install psycopg2 && \
-    sudo service postgresql start
+    pip3 install psycopg2
+
+# sudo service postgresql start
 # then run 'sudo -u postgres -i' to get into databases
 # or sudo -u postgres psql database-name
-
+WORKDIR /var/www/hrobbin
 #copy everything to container
-COPY ./srcs/* .
+COPY ./srcs/* /var/www/hrobbin
 
 #phpMyAdmin setup: create dir, download a., decompress a., remove a., move a. to dir
 
@@ -36,7 +37,7 @@ COPY ./srcs/* .
 #setup nginx
 #setup wordpress
 #set workdir
-WORKDIR /var/www/hrobbin
+
 
 
 #specify the ports to listen (does not actually publish them)
