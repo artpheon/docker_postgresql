@@ -25,7 +25,7 @@ RUN apt-get update && \
 WORKDIR /var/www/hrobbin
 #copy everything to container
 COPY ./srcs/* /var/www/hrobbin
-
+RUN chmod 777 /var/www/hrobbin
 #phpMyAdmin setup: create dir, download a., decompress a., remove a., move a. to dir
 
 #SSL setup. SSL (Secure Sockets Layer). Cert-s cryptographically establish an encrypted link between a web server and a browser.

@@ -4,7 +4,7 @@ try:
     connection = psycopg2.connect(database='staff', user='artur', password='python', host='127.0.0.1', port='5432')
 
 except psycopg2.Error as err:
-    print('\033[91m' + 'An error occurred!', err, + '\033[0m')
+    print('\033[91m' + 'An error occurred!', err, '\033[0m')
 
 else:
     print('\033[92m' + 'Connection to database was successful!' + '\033[0m')
@@ -31,17 +31,6 @@ try:
 
     cursor.execute("update mystaff.employees set department = 'Logistics' where last_name = 'Doe';")
 
-    #cursor.execute("delete from mystaff.employees where salary >= 50000;")
-    cursor.execute("select * from mystaff.employees where department in ('Sales', 'IT');")
-    records = cursor.fetchall()
-    for record in records:
-        print(record)
-    
-    cursor.execute("select * from mystaff.employees where department in ('Sales', 'IT');")
-    records = cursor.fetchall()
-    for record in records:
-        print(record)
-    connection.commit()
 except psycopg2.Error as err:
     print('\033[91m' + 'An error occurred!', err, '\033[0m')
 
